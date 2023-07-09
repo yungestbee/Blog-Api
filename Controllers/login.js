@@ -8,9 +8,8 @@ const secret = process.env.SECRET_KEY
 
 const login = async (req, res)=>{
     const {error, value} = loginJoi.validate(req.body);
-    // console.log(value)
+    if(error) return res.status(400).send(error.message)
     const log = await user.findOne({username: value.username})
-    // console.log(log)
     if(log === null){
         res.status(400).send("invalid credentials")
     } else {

@@ -7,6 +7,7 @@ const post = require('../Models/postSchema')
 
 const createPost = async (req, res, next)=>{
     const {error, value} = postJoi.validate(req.body);
+    if(error) return res.status(400).send(error.message)
     const userId = req.user
     console.log(userId)
     try {

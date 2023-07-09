@@ -9,6 +9,7 @@ const user = require('../Models/userSchema')
 
 const createUser = async (req, res)=>{
     const {error, value} = userJoi.validate(req.body);
+    if(error) return res.status(400).send(error.message)
     try {
         const salt = await bcrypt.genSalt()
         const hashedPassword = await bcrypt.hash(value.password, salt)
