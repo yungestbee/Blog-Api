@@ -19,7 +19,7 @@ const login = async (req, res)=>{
             if(!verify){
                 res.status(400).send("invalid credentials")
             } else {
-                const token = jwt.sign({username:log.username}, secret)
+                const token = jwt.sign({username:log.username}, secret, {expiresIn: "5m"})
                 res.status(200).send(`Welcome Back ${value.username} \n ${token}`)
             }
         } catch (error) {

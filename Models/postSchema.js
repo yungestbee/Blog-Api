@@ -9,6 +9,10 @@ const postSchema = mongoose.Schema({
     type: String,
     require: true
   },
+  user_id:{
+    type: String,
+    require: true
+  }
 });
 
 const post = mongoose.model("post", postSchema);
